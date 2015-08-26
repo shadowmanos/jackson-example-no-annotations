@@ -1,0 +1,1 @@
+# non-annotated-jackson-example
