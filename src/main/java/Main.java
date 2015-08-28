@@ -1,4 +1,7 @@
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.DEFAULT;
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NON_PRIVATE;
+import static com.fasterxml.jackson.annotation.PropertyAccessor.CREATOR;
 import static com.fasterxml.jackson.annotation.PropertyAccessor.FIELD;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
@@ -8,11 +11,7 @@ import java.io.IOException;
 class Main {
 
     public static void main(String[] args) throws IOException {
-        Person person = Person.builder()
-                .name("John")
-                .surname("Smith")
-                .age(40)
-                .build();
+        Person person = new Person("John", "Smith", 40);
 
         ObjectMapper mapper = new ObjectMapper();
 
