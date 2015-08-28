@@ -1,7 +1,6 @@
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
 import static com.fasterxml.jackson.annotation.PropertyAccessor.FIELD;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.module.afterburner.AfterburnerModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import java.io.File;
 import java.io.IOException;
@@ -15,8 +14,6 @@ class Main {
                 .age(40)
                 .build();
 
-        File file = new File("person.json");
-
         ObjectMapper mapper = new ObjectMapper();
 
         // Avoid having to annotate the Person class
@@ -27,7 +24,7 @@ class Main {
         // make private fields of Person visible to Jackson
         mapper.setVisibility(FIELD, ANY);
 
-
+        File file = new File("person.json");
         mapper.writeValue(file, person);
 
         Person anotherPerson = mapper.readValue(file, Person.class);
