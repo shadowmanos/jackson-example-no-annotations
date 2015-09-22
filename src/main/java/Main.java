@@ -1,4 +1,5 @@
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+import static com.fasterxml.jackson.annotation.JsonCreator.Mode.PROPERTIES;
 import static com.fasterxml.jackson.annotation.PropertyAccessor.FIELD;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
@@ -19,7 +20,7 @@ class Main {
         // Avoid having to annotate the Person class
         // Requires Java 8, pass -parameters to javac
         // and jackson-module-parameter-names as a dependency
-        mapper.registerModule(new ParameterNamesModule());
+        mapper.registerModule(new ParameterNamesModule(PROPERTIES));
 
         // make private fields of Person visible to Jackson
         mapper.setVisibility(FIELD, ANY);
